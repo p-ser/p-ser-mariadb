@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: mariadb-ns
+resources:
+  - ./stateful-set.yaml
+  - ./service.yaml
+  - ./namespace.yaml
+commonLabels:
+  app: p-ser-mariadb
+configMapGenerator:
+  - name: init-db
+    files:
+      - config/init.sql

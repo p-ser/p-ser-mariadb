@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-service
+spec:
+  ports:
+    - name: http
+      port: 3306
+  type: ClusterIP
+  clusterIP: None # Headless
+  selector:
+    app: p-ser-mariadb
